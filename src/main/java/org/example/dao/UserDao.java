@@ -41,9 +41,7 @@ public class UserDao {
     }
 
     public void add(User user) {
-        Map<String, String> env = System.getenv();
         try {
-            // DB접속 (ex sql workbeanch실행)
             Connection c = cm.makeConnection();
 
             // Query문 작성
@@ -92,9 +90,10 @@ public class UserDao {
     }
 
     public static void main(String[] args) {
+
         UserDao userDao = new UserDao();
 //        userDao.add();
-        User user = userDao.findById("6");
+        User user = userDao.findById("1");
         System.out.println(user.getName());
 
     }
