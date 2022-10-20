@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 public class UserDaoFactory {
 
     @Bean
-    public UserDao aswsUserDao(){
+    public UserDao awsUserDao(){
         return new UserDao(new AwsConnectionMaker());
     }
 }

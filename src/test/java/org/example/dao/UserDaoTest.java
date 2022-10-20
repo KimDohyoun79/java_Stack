@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserDaoTest {
@@ -22,4 +25,6 @@ class UserDaoTest {
         assertEquals("name100", user.getName());
         assertEquals("pw100", user.getPassword());
     }
+
+
 }
