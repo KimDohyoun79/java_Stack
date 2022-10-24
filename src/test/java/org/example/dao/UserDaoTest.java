@@ -20,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = UserDaoFactory.class)
-
 class UserDaoTest {
     @Autowired
     ApplicationContext context;
@@ -28,9 +27,10 @@ class UserDaoTest {
     UserDao userDao;
 
     @BeforeEach
-    void setUp(){
-        userDao=context.getBean("awsUserDao", UserDao.class);
+    void setUp() {
+        userDao = context.getBean("awsUserDao", UserDao.class);
     }
+
     @Test
     @DisplayName("users table insert 확인")
     void addAndGet() throws SQLException {
@@ -39,16 +39,17 @@ class UserDaoTest {
         User user1 = new User("0", "minji", "1223");
         userDao.add(user1);
         assertEquals(1, userDao.getCount());
-        User user=userDao.findById(user1.getId());
+        User user = userDao.findById(user1.getId());
 
         assertEquals(user1.getName(), user.getName());
         assertEquals(user1.getPassword(), user.getPassword());
     }
+
     @Test
-    void count() throws SQLException{
-        User user1=new User("1", "minji", "1111");
-        User user2=new User("2", "somin", "2222");
-        User user3=new User("3", "jonghyun", "3333");
+    void count() throws SQLException {
+        User user1 = new User("1", "minji", "1111");
+        User user2 = new User("2", "somin", "2222");
+        User user3 = new User("3", "jonghyun", "3333");
 
         userDao.deleteAll();
         userDao.add(user1);
@@ -60,9 +61,9 @@ class UserDaoTest {
     }
 
     @Test
-    void findById(){
-        assertThrows(EmptyResultDataAccessException.class, ()->{
-            userDao.findById("20");
+    void findById() {
+        assertThrows(RuntimeException.class, () -> {
+            userDao.findById("1");
         });
     }
 }
